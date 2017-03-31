@@ -14,6 +14,7 @@ ENV PROJECT_PATH=/var/www \
     LC_ALL=en_US.UTF-8 \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
+    APACHE_LOG_DIR=/var/log/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
     PHP_INI=/etc/php/7.0/apache2/php.ini \
     TERM=xterm
@@ -28,7 +29,6 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.
 # Utilities, Apache, PHP, and supplementary programs
 RUN apt-get update -q && apt-get install -yqq --force-yes \
     git \
-    nano \
     npm \
     wget \
     yarn \
