@@ -35,7 +35,8 @@ RUN apt-get update -q && apt-get install -yqq --force-yes \
     zip \
     apache2 \
     libapache2-mod-php \
-    php
+    php \
+    php-dom
 
 # NodeJS alias
 RUN ln -s "$(which nodejs)" /usr/bin/node
