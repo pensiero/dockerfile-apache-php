@@ -65,6 +65,9 @@ RUN apt-get purge -yq \
       wget && \
     apt-get autoremove -yqq
 
+# VirtualHost
+COPY config/apache-virtualhost.conf /etc/apache2/sites-available/000-default.conf
+
 # Port to expose
 EXPOSE 80 443
 
