@@ -3,15 +3,9 @@ FROM ubuntu:16.04
 # Labels
 LABEL maintainer "oscar.fanelli@gmail.com"
 
-# Locale generator
-RUN locale-gen en_US.UTF-8
-
 # Environment variables
 ENV PROJECT_PATH=/var/www \
     DEBIAN_FRONTEND=noninteractive \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8 \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
     APACHE_LOG_DIR=/var/log/apache2 \
@@ -20,9 +14,16 @@ ENV PROJECT_PATH=/var/www \
     TERM=xterm
 
 # Update, upgrade and cURL installation
-RUN apt-get update -q && apt-get upgrade -yqq && apt-get install -yqq curl
+RUN apt-get update -q && apt-get upgrade -yqq && apt-get install -yqq curl locales
 
-# Yarn package manager
+# Locale generator
+RUN locale-gen en_US.UTF-8
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+# Yarn package managerc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
