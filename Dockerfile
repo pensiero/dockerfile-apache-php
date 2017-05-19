@@ -37,6 +37,7 @@ RUN apt-get update -q && apt-get install -yqq --force-yes \
     apache2 \
     libapache2-mod-php \
     php \
+    php-curl \
     php-dom
 
 # NodeJS alias
