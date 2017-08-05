@@ -14,7 +14,7 @@ ENV PROJECT_PATH=/var/www \
     TERM=xterm
 
 # Update, upgrade and cURL installation
-RUN apt-get update -q && apt-get upgrade -yqq && apt-get install -yqq curl locales
+RUN apt update -q && apt upgrade -yqq && apt install -yqq curl locales
 
 # Locale generator
 RUN locale-gen en_US.UTF-8
@@ -28,7 +28,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Utilities, Apache, PHP, and supplementary programs
-RUN apt-get update -q && apt-get install -yqq --force-yes \
+RUN apt update -q && apt install -yqq --force-yes \
     git \
     npm \
     wget \
@@ -64,11 +64,11 @@ RUN sed -i "s/short_open_tag = .*/short_open_tag = On/" $PHP_INI && \
     sed -i "s/error_reporting = .*/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/" $PHP_INI
 
 # Cleanup
-RUN apt-get purge -yq \
+RUN apt purge -yq \
       patch \
       software-properties-common \
       wget && \
-    apt-get autoremove -yqq
+    apt autoremove -yqq
 
 # VirtualHost
 COPY config/apache-virtualhost.conf /etc/apache2/sites-available/000-default.conf
