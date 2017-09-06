@@ -10,11 +10,11 @@ ENV PROJECT_PATH=/var/www \
     APACHE_RUN_GROUP=www-data \
     APACHE_LOG_DIR=/var/log/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
-    PHP_INI=/etc/php/7.0/apache2/php.ini \
+    PHP_INI=/etc/php/7.1/apache2/php.ini \
     TERM=xterm
 
 # Update, upgrade and cURL installation
-RUN apt update -q && apt upgrade -yqq && apt install -yqq curl locales
+RUN apt update -q && apt upgrade -yqq && apt install -yqq software-properties-common curl locales
 
 # Locale generator
 RUN locale-gen en_US.UTF-8
@@ -22,6 +22,9 @@ RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
+
+# Mandatory in order to use PHP v7.1 instead of default one v7.0
+RUN add-apt-repository ppa:ondrej/php
 
 # Yarn package managerc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -35,13 +38,13 @@ RUN apt update -q && apt install -yqq --force-yes \
     yarn \
     zip \
     apache2 \
-    libapache2-mod-php \
-    php \
-    php-bcmath \
-    php-curl \
-    php-dom \
-    php-mbstring \
-    php-intl
+    libapache2-mod-php7.1 \
+    php7.1 \
+    php7.1-bcmath \
+    php7.1-curl \
+    php7.1-dom \
+    php7.1-mbstring \
+    php7.1-intl
 
 # NodeJS alias
 RUN ln -s "$(which nodejs)" /usr/bin/node
