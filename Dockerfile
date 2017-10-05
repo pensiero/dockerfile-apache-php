@@ -5,6 +5,7 @@ LABEL maintainer "oscar.fanelli@gmail.com"
 
 # Environment variables
 ENV PROJECT_PATH=/var/www \
+    PROJECT_PUBLIC_DIR=public \
     DEBIAN_FRONTEND=noninteractive \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
