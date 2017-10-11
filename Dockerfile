@@ -26,7 +26,7 @@ ENV LANG=en_US.UTF-8 \
 
 # Yarn package managerc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Utilities, Apache, PHP, and supplementary programs
 RUN apt update -q && apt install -yqq --force-yes \
