@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # Labels
 LABEL maintainer "oscar.fanelli@gmail.com"
@@ -11,11 +11,11 @@ ENV PROJECT_PATH=/var/www \
     APACHE_RUN_GROUP=www-data \
     APACHE_LOG_DIR=/var/log/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
-    PHP_INI=/etc/php/7.0/apache2/php.ini \
+    PHP_INI=/etc/php/7.2/apache2/php.ini \
     TERM=xterm
 
 # Update, upgrade and cURL installation
-RUN apt update -q && apt upgrade -yqq && apt install -yqq curl locales
+RUN apt update -q && apt upgrade -yqq && apt install -yqq curl locales gnupg
 
 # Locale generator
 RUN locale-gen en_US.UTF-8
@@ -43,9 +43,6 @@ RUN apt update -q && apt install -yqq --force-yes \
     php-dom \
     php-mbstring \
     php-intl
-
-# NodeJS alias
-RUN ln -s "$(which nodejs)" /usr/bin/node
 
 # Apache mods
 RUN a2enmod rewrite expires headers
