@@ -24,7 +24,7 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-# Mandatory in order to use PHP v7.1 instead of default one v7.0
+# Mandatory in order to use PHP v5.6 instead of default one v7.0
 RUN add-apt-repository ppa:ondrej/php
 
 # Yarn package managerc
