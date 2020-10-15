@@ -16,10 +16,13 @@ The `master` branch is always associated with the `latest` tag of the Docker ima
 This repository also comes with different feature branches for different Docker image tags.
 For example, the branch: `feature/php71` is associated with the tag `php7.1`.
 
-### Available PHP versions
-Check out all the available tags here on [Docker Hub](https://hub.docker.com/repository/docker/pensiero/apache-php/tags).
+### Which PHP version is used by default?
+`PHP 7.4`
 
-If you wanna use different php version, you can leverage the following images
+### Available PHP versions
+Check out all the available tags on [Docker Hub](https://hub.docker.com/repository/docker/pensiero/apache-php/tags).
+
+If you wanna use a different php version, you can leverage any of the following images:
 - `PHP 5.6` --> `pensiero/apache-php:php5.6`
 - `PHP 7.0` --> `pensiero/apache-php:php7.0` 
 - `PHP 7.1` --> `pensiero/apache-php:php7.1`
