@@ -15,7 +15,10 @@ This repository also comes with different feature branches for different Docker 
 For example, the branch: `feature/php71` is associated with the tag `php7.1`.
 
 ### Available PHP versions
-- `php5.6` --> `pensiero/apache-php:php5.6`
-- `php7.0` --> `pensiero/apache-php:php7.0` 
-- `php7.1` --> `pensiero/apache-php:php7.1`
-- `php7.2` --> `pensiero/apache-php:php7.2`
+Check out all the available tags here on [Docker Hub](https://hub.docker.com/repository/docker/pensiero/apache-php/tags).
+
+If you wanna use different php version, you can leverage the following images
+- `PHP 5.6` --> `pensiero/apache-php:php5.6`
+- `PHP 7.0` --> `pensiero/apache-php:php7.0` 
+- `PHP 7.1` --> `pensiero/apache-php:php7.1`
+- `PHP 7.2` --> `pensiero/apache-php:php7.2`
