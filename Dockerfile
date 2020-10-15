@@ -11,11 +11,11 @@ ENV PROJECT_PATH=/var/www \
     APACHE_RUN_GROUP=www-data \
     APACHE_LOG_DIR=/var/log/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
-    PHP_INI=/etc/php/7.2/apache2/php.ini \
+    PHP_INI=/etc/php/7.4/apache2/php.ini \
     TERM=xterm
 
 # Update, upgrade and cURL installation
-RUN apt update -q && apt upgrade -yqq && apt install -yqq curl locales gnupg
+RUN apt update -q && apt upgrade -yqq && apt install -yqq software-properties-common curl locales gnupg
 
 # Locale generator
 RUN locale-gen en_US.UTF-8
@@ -23,6 +23,10 @@ RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
+
+# Mandatory in order to use PHP v7.4 instead of default one (v7.2)
+RUN add-apt-repository ppa:ondrej/php
+
 
 # Yarn package managerc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -37,12 +41,12 @@ RUN apt update -q && apt install -yqq --force-yes \
     zip \
     apache2 \
     libapache2-mod-php \
-    php \
-    php-bcmath \
-    php-curl \
-    php-dom \
-    php-mbstring \
-    php-intl
+    php7.4 \
+    php7.4-bcmath \
+    php7.4-curl \
+    php7.4-dom \
+    php7.4-mbstring \
+    php7.4-intl
 
 # Apache mods
 RUN a2enmod rewrite expires headers

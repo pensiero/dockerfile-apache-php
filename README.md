@@ -22,3 +22,4 @@ If you wanna use different php version, you can leverage the following images
 - `PHP 7.0` --> `pensiero/apache-php:php7.0` 
 - `PHP 7.1` --> `pensiero/apache-php:php7.1`
 - `PHP 7.2` --> `pensiero/apache-php:php7.2`
+- `PHP 7.4` --> `pensiero/apache-php:php7.4`
